@@ -8,3 +8,8 @@ gem 'pry'
 gem 'sinatra-activerecord'
 gem 'require_all'
 gem 'shotgun'
+gem 'bcrypt'
+
+group :development do
+  gem "tux"
+end
