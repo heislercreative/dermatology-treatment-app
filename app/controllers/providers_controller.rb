@@ -1,7 +1,7 @@
 class ProvidersController < ApplicationController
 
   get '/providers' do
-    erb :index
+    "Hello World"
   end
 
 end
