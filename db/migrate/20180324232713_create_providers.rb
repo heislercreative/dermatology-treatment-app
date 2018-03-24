@@ -3,7 +3,7 @@ class CreateProviders < ActiveRecord::Migration[5.1]
     create_table :providers do |t|
       t.string :name
       t.string :username
-      t.password :password_digest
+      t.string :password_digest
     end
   end
 end
