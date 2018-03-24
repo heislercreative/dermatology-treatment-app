@@ -1,7 +1,7 @@
 class ProvidersController < ApplicationController
 
-  get '/providers' do
-    "Hello World"
+  get '/home' do
+    erb :'/providers/home'
   end
 
 end
