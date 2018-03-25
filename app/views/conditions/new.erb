@@ -1,11 +1,13 @@
 <h3>Add a Condition</h3>
 
 <form method="post" action="/conditions">
-  <label>Select a Condition: </label>
-  <% Condition.list.each do |condition| %>
-    <input type="radio" name="condition[name]" value="<%= condition %>"><br>
+  <label>Select a Condition:</label>
+  <br>
+  <% @conditions.each do |condition| %>
+    <input type="radio" name="condition[name]" value="<%= condition %>"> <%= condition %></input><br>
   <% end %>
-  <br><br>
+
+  <br>
 
   <label>Date Diagnosed: </label>
   <input type="text" name="condition[date_diagnosed]" placeholder="01/15/2018">
@@ -13,9 +15,10 @@
   <br><br>
 
   <label>Treated: </label>
-  <input type="radio" name="condition[phone]">
+  <input type="radio" name="condition[treated]" value="true"> Yes</input>
+  <input type="radio" name="condition[treated]" value="false"> No</input>
 
   <br><br>
 
-  <input type="submit" value="Create Patient">
+  <input type="submit" value="Add Condition">
 </form>

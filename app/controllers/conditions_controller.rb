@@ -1,6 +1,7 @@
 class ConditionsController < ApplicationController
 
   get '/conditions/new' do
+    @conditions = Condition.list
     erb :'/conditions/new'
   end
 

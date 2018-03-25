@@ -6,17 +6,17 @@ class Condition < ActiveRecord::Base
   end
 
   @@condition_list = [
-    "acne",
-    "actinic keratosis",
-    "atypical mole",
-    "basal cell carcinoma",
-    "contact dermatitis",
-    "cyst",
-    "dermatitis",
-    "eczema",
-    "lipoma",
-    "melanoma",
-    "squamous cell carcinoma",
-    "wart(s)"
+    "Acne",
+    "Actinic keratosis",
+    "Atypical mole",
+    "Basal cell carcinoma",
+    "Contact dermatitis",
+    "Cyst",
+    "Dermatitis",
+    "Eczema",
+    "Lipoma",
+    "Melanoma",
+    "Squamous cell carcinoma",
+    "Wart(s)"
   ]
 end
