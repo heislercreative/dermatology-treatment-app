@@ -15,7 +15,13 @@
 <h3>Conditions (select to edit):</h3>
 <ol>
   <% @conditions.each do |condition| %>
-    <li><a href="/patients/<%= @patient.id %>/conditions/<%= condition.id %>/edit"><strong><%= condition.name %></strong></a> - Diagnosed: <%= condition.date_diagnosed %></li>
+    <li>
+      <a href="/patients/<%= @patient.id %>/conditions/<%= condition.id %>/edit"><strong><%= condition.name %></strong></a>
+       - Diagnosed: <%= condition.date_diagnosed %>
+      <% if condition.treated == true %>
+        <em><strong> - Treated</strong></em>
+      <% end %>
+    </li>
   <% end %>
 </ol>
 
