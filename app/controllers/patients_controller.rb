@@ -29,4 +29,10 @@ class PatientsController < ApplicationController
     redirect to "/patients/#{@patient.id}"
   end
 
+  delete '/patients/:id/delete' do
+    @patient = Patient.find_by_id(params[:id])
+    @patient.delete
+    redirect to '/providers/home'
+  end
+
 end
