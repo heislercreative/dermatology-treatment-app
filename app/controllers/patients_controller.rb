@@ -5,8 +5,11 @@ class PatientsController < ApplicationController
   end
 
   post '/patients' do
-    patient = Patient.create(params)
-    redirect to "/patients/#{patient.id}"
+    @patient = Patient.new(params)
+    @provider = Provider.find(session[:user_id])
+    @patient.provider_id = @provider.id
+    @patient.save
+    redirect to "/patients/#{@patient.id}"
   end
 
   get '/patients/:id' do
