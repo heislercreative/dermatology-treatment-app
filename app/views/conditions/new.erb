@@ -5,7 +5,7 @@
 <h2><%= @patient.name %></h2>
 <h3>Add a Condition</h3>
 
-<form method="post" action="/conditions">
+<form method="post" action="/patients/<%= @patient.id %>/conditions">
   <label>Select a Condition:</label>
   <br>
   <% @conditions.each do |condition| %>
