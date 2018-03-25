@@ -32,6 +32,11 @@ class ProvidersController < ApplicationController
     end
   end
 
+  get '/logout' do
+    session.clear
+    redirect to '/'
+  end
+
   get '/failure' do
     erb :failure
   end
