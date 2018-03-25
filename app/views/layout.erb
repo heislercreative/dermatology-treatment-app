@@ -6,7 +6,11 @@
 
   <body>
 
-    <%= yield %>
+    <% if Helpers.is_logged_in?(session) %>
+      <%= yield %>
+    <% else %>
+      <% erb :index %>
+    <% end %>
 
   </body>
 </html>
