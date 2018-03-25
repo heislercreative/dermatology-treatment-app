@@ -5,7 +5,7 @@ class Condition < ActiveRecord::Base
     @@condition_list
   end
 
-  @@condition_list = {
+  @@condition_list = [
     "acne",
     "actinic keratosis",
     "atypical mole",
@@ -18,5 +18,5 @@ class Condition < ActiveRecord::Base
     "melanoma",
     "squamous cell carcinoma",
     "wart(s)"
-  }
+  ]
 end

@@ -2,13 +2,9 @@
 
 <form method="post" action="/conditions">
   <label>Select a Condition: </label>
-  <input type="radio" name="condition[name]">
-
-  <br><br>
-
-  <label>Or Add New Condition: </label>
-  <input type="text" name="condition[name]" placeholder="Condition Name">
-
+  <% Condition.list.each do |condition| %>
+    <input type="radio" name="condition[name]" value="<%= condition.name %>"><br>
+  <% end %>
   <br><br>
 
   <label>Date Diagnosed: </label>
