@@ -3,6 +3,11 @@
 <br>
 
 <h3>Your Patients:</h3>
+<ul>
+  <% @patients.sort_by{|p| p.name}.each do |patient| %>
+    <li><%= patient.name %></li>
+  <% end %>
+</ul>
 
 <br><br>
 
