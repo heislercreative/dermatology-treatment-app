@@ -1,0 +1,14 @@
+<h2><%= @patient.name %></h2>
+
+<h3>Conditions:</h3>
+<ol>
+  <% @conditions.each do |condition| %>
+    <li><%= condition.name %></li>
+  <% end %>
+</ol>
+
+<br><br>
+
+<form action="/providers/home">
+  <input type="submit" value="Return to Patient List">
+</form>
