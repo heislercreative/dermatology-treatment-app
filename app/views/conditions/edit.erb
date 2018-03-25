@@ -1,0 +1,34 @@
+<h3>Edit Condition</h3>
+
+<form method="post" action="/conditions">
+  <label>Select a Condition:</label>
+  <br>
+  <% @conditions.each do |condition| %>
+    <input type="radio" name="condition[name]" value="<%= condition %>"> <%= condition %></input><br>
+  <% end %>
+
+  <br>
+
+  <label>Location: </label>
+  <input type="text" name="condition[location]" placeholder="Ex: Left inferior cheek">
+
+  <br><br>
+
+  <label>Date Diagnosed: </label>
+  <input type="text" name="condition[date_diagnosed]" value="<%= @condition.date_diagnosed %>">
+
+  <br><br>
+
+  <label>Treated: </label>
+  <input type="radio" name="condition[treated]" value="true"> Yes</input>
+  <input type="radio" name="condition[treated]" value="false"> No</input>
+
+  <br><br>
+
+  <label>Treatment: </label>
+  <input type="text" name="condition[treatment]" value="<%= @condition.treatment %>">
+
+  <br><br>
+
+  <input type="submit" value="Add Condition">
+</form>
