@@ -13,6 +13,20 @@ class ProvidersController < ApplicationController
     end
   end
 
+  get '/login' do
+    erb :login
+  end
+
+  post '/login' do
+    provider = Provider.find_by(username: params[:username])
+    if provider && provider.authenticate(params[:password])
+      session[:user_id] = provider.id
+      redirect to '/providers/home'
+    else
+      redirect to '/failure'
+    end
+  end
+
   get '/home' do
     erb :'/providers/home'
   end
