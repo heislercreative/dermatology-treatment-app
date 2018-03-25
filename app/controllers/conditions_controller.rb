@@ -7,15 +7,17 @@ class ConditionsController < ApplicationController
   end
 
   post '/patients/:id/conditions' do
-    @condition = Condition.new(params[:condition])
     @patient = Patient.find_by_id(params[:id])
+    @condition = Condition.new(params[:condition])
     @condition.patient_id = @patient.id
     @condition.save
     redirect to "/patients/#{@patient.id}"
   end
 
   get '/patients/:id/conditions/:cid/edit' do
-
+    @patient = Patient.find_by_id(params[:id])
+    @conditions = Condition.list
+    @condition = Condition.find_by_id(params[:cid])
     erb :'/conditions/edit'
   end
 
