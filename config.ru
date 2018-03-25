@@ -7,4 +7,5 @@ end
 use Rack::MethodOverride
 use ProvidersController
 use PatientsController
+use ConditionsController
 run ApplicationController

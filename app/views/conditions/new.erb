@@ -3,7 +3,7 @@
 <form method="post" action="/conditions">
   <label>Select a Condition: </label>
   <% Condition.list.each do |condition| %>
-    <input type="radio" name="condition[name]" value="<%= condition.name %>"><br>
+    <input type="radio" name="condition[name]" value="<%= condition %>"><br>
   <% end %>
   <br><br>
 
