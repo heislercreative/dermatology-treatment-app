@@ -5,7 +5,7 @@ class PatientsController < ApplicationController
   end
 
   post '/patients' do
-    @patient = Patient.new(params)
+    @patient = Patient.new(params[:patient])
     @provider = Provider.find(session[:user_id])
     @patient.provider_id = @provider.id
     @patient.save
