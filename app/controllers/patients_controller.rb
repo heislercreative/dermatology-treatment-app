@@ -9,9 +9,10 @@ class PatientsController < ApplicationController
     redirect to "/patients/#{patient.id}"
   end
 
-  get '/patient/:id' do
+  get '/patients/:id' do
     @patient = Patient.find_by_id(params[:id])
-    erb :show
+    @conditions = @patient.conditions
+    erb :'/patients/show'
   end
 
 end
