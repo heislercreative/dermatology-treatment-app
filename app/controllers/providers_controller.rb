@@ -2,7 +2,7 @@ class ProvidersController < ApplicationController
 
   get '/providers/home' do
     @provider = Provider.find(session[:user_id])
-    @patients = Provider.patients
+    @patients = @provider.patients
     erb :'/providers/home'
   end
 

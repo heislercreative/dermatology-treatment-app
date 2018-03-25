@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180324233426) do
+ActiveRecord::Schema.define(version: 20180325014316) do
 
   create_table "conditions", force: :cascade do |t|
     t.string "name"
@@ -23,6 +23,7 @@ ActiveRecord::Schema.define(version: 20180324233426) do
     t.string "name"
     t.string "dob"
     t.string "phone"
+    t.integer "provider_id"
   end
 
   create_table "providers", force: :cascade do |t|
