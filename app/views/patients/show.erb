@@ -15,9 +15,8 @@
   <input type="submit" value="Edit Patient">
 </form>
 
-<form action="/patients/<%= @patient.id %>/delete" method="post">
-  <input type="hidden" id="hidden" name="_method" value="delete">
-  <input type="submit" value="DELETE Patient">
+<form action="/patients/<%= @patient.id %>/delete">
+  <input type="submit" value="Delete Patient">
 </form>
 
 <br><br>

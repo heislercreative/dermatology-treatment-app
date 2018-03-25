@@ -29,6 +29,11 @@ class PatientsController < ApplicationController
     redirect to "/patients/#{@patient.id}"
   end
 
+  get '/patients/:id/delete' do
+    @patient = Patient.find_by_id(params[:id])
+    erb :'/patients/delete'
+  end
+
   delete '/patients/:id/delete' do
     @patient = Patient.find_by_id(params[:id])
     @patient.delete
