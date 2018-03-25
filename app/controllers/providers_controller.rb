@@ -7,7 +7,7 @@ class ProvidersController < ApplicationController
   post '/signup' do
     provider = Provider.new(params)
     if provider.save
-      redirect to '/login'
+      redirect to '/providers/home'
     else
       redirect to '/failure'
     end
@@ -15,6 +15,10 @@ class ProvidersController < ApplicationController
 
   get '/home' do
     erb :'/providers/home'
+  end
+
+  get '/failure' do
+    erb :failure
   end
 
 end
