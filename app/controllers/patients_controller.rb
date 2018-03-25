@@ -23,4 +23,10 @@ class PatientsController < ApplicationController
     erb :'/patients/edit'
   end
 
+  patch '/patients/:id' do
+    @patient = Patient.find_by_id(params[:id])
+    @patient.update(params)
+    redirect to "/patients/#{@patient.id}"
+  end
+
 end

@@ -1,4 +1,6 @@
-<form method="post" action="/patients">
+<form method="post" action="/patients/<%= @patient.id %>">
+  <input type="hidden" id="hidden" name="_method" value="patch">
+
   <label>Name: </label>
   <input type="text" name="name" value="<%= @patient.name %>">
 
