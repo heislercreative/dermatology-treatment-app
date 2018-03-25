@@ -20,7 +20,7 @@
   <label>Date Diagnosed: </label>
   <input type="text" name="condition[date_diagnosed]" value="<%= @condition.date_diagnosed %>">
 
-  <br><br>
+  <br><br><hr><br>
 
   <label>Treated: </label>
   <input type="radio" name="condition[treated]" value="true" <%='checked' if @condition.treated == true %>> Yes</input>
@@ -30,6 +30,11 @@
 
   <label>Treatment: </label>
   <input type="text" name="condition[treatment]" value="<%= @condition.treatment %>">
+
+  <br><br>
+
+  <label>Date Treated: </label>
+  <input type="text" name="condition[date_treated]" value="<%= @condition.date_treated %>">
 
   <br><br>
 

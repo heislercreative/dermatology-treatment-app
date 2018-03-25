@@ -19,7 +19,7 @@
       <a href="/patients/<%= @patient.id %>/conditions/<%= condition.id %>/edit"><strong><%= condition.name %></strong></a>
        - Diagnosed: <%= condition.date_diagnosed %>
       <% if condition.treated == true %>
-        <em><strong> - Treated</strong></em>
+        <em><strong> - Treated: <%= condition.date_treated %></strong></em>
       <% end %>
     </li>
   <% end %>
