@@ -14,12 +14,7 @@ class ConditionsController < ApplicationController
     redirect to "/patients/#{@patient.id}"
   end
 
-  get '/conditions/:id' do
-
-    erb :'/conditions/show'
-  end
-
-  get '/conditions/:id/edit' do
+  get '/patients/:id/conditions/:cid/edit' do
 
     erb :'/conditions/edit'
   end
