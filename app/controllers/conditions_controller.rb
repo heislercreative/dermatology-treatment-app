@@ -21,9 +21,11 @@ class ConditionsController < ApplicationController
     erb :'/conditions/edit'
   end
 
-  patch '/conditions/:id' do
-
-    redirect to "/conditions/#{@condition.id}"
+  patch '/patients/:id/conditions/:cid' do
+    @patient = Patient.find_by_id(params[:id])
+    @condition = Condition.find_by_id(params[:cid])
+    @condition.update(params[:condition])
+    redirect to "/patients/#{@patient.id}"
   end
 
   delete '/conditions/:id/delete' do

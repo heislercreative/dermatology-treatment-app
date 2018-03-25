@@ -1,7 +1,9 @@
 <h2><%= @patient.name %></h2>
 <h3>Edit Condition</h3>
 
-<form method="post" action="/conditions">
+<form method="post" action="/patients/<%= @patient.id %>/conditions/<%= @condition.id %>">
+  <input type="hidden" id="hidden" name="_method" value="patch">
+
   <label>Select a Condition:</label>
   <br>
   <% @conditions.each do |condition| %>
