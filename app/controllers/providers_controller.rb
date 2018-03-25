@@ -13,6 +13,7 @@ class ProvidersController < ApplicationController
   post '/signup' do
     provider = Provider.new(params)
     if provider.save
+      session[:user_id] = provider.id
       redirect to '/providers/home'
     else
       redirect to '/failure'
