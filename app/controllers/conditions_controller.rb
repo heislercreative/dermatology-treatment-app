@@ -28,8 +28,16 @@ class ConditionsController < ApplicationController
     redirect to "/patients/#{@patient.id}"
   end
 
-  delete '/conditions/:id/delete' do
+  get '/patients/:id/conditions/:cid/delete' do
+    @patient = Patient.find_by_id(params[:id])
+    @condition = Condition.find_by_id(params[:cid])
+    erb :'/conditions/delete'
+  end
 
+  delete '/patients/:id/conditions/:cid/delete' do
+    @patient = Patient.find_by_id(params[:id])
+    @condition = Condition.find_by_id(params[:cid])
+    @condition.delete
     redirect to "/patients/#{@patient.id}"
   end
 
