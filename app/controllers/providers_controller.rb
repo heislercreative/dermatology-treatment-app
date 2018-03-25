@@ -1,5 +1,10 @@
 class ProvidersController < ApplicationController
 
+  get '/providers/home' do
+    @provider = Provider.find(session[:user_id])
+    erb :'/providers/home'
+  end
+
   get '/signup' do
     erb :signup
   end
@@ -25,10 +30,6 @@ class ProvidersController < ApplicationController
     else
       redirect to '/failure'
     end
-  end
-
-  get '/home' do
-    erb :'/providers/home'
   end
 
   get '/failure' do
