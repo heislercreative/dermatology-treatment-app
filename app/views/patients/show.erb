@@ -1,6 +1,16 @@
+<form action="/providers/home">
+  <input type="submit" value="Return to Patient List">
+</form>
+
 <h2><%= @patient.name %></h2>
 <p><strong>DOB: </strong><em><%= @patient.dob %></em></p>
 <p><strong>Phone: </strong><%= @patient.phone %></p>
+
+<form action="/patients/<%= @patient.id %>/edit">
+  <input type="submit" value="Edit Patient">
+</form>
+
+<hr>
 
 <h3>Conditions:</h3>
 <ol>
@@ -11,16 +21,12 @@
 
 <br>
 
-<form action="/patients/<%= @patient.id %>/edit">
-  <input type="submit" value="Edit Patient">
+<form action="/patients/<%= @patient.id %>/conditions/new">
+  <input type="submit" value="Add Condition">
 </form>
+
+<hr><br>
 
 <form action="/patients/<%= @patient.id %>/delete">
   <input type="submit" value="Delete Patient">
-</form>
-
-<br><br>
-
-<form action="/providers/home">
-  <input type="submit" value="Return to Patient List">
 </form>
