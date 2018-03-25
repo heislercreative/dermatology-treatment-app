@@ -18,4 +18,9 @@ class PatientsController < ApplicationController
     erb :'/patients/show'
   end
 
+  get '/patients/:id/edit' do
+    @patient = Patient.find_by_id(params[:id])
+    erb :'/patients/edit'
+  end
+
 end
