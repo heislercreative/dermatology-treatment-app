@@ -1,9 +1,11 @@
 <h2><%= @patient.name %></h2>
+<p><strong>DOB: </strong><em><%= @patient.dob %></em></p>
+<p><strong>Phone: </strong><%= @patient.phone %></p>
 
 <h3>Conditions:</h3>
 <ol>
   <% @conditions.each do |condition| %>
-    <li><%= condition.name %></li>
+    <li><%= condition.name %> - <%= condition.date_diagnosed %></li>
   <% end %>
 </ol>
 
