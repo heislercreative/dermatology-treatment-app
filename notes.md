@@ -12,5 +12,5 @@
     * have many conditions
 [] Conditions
     - can be added, edited, or deleted by providers
-    - name, date diagnosed, treated (yes or no), treatment
+    - name, date diagnosed, treated (yes or no), treatment, date treated
     * belong to patients
