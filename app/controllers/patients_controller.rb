@@ -4,4 +4,9 @@ class PatientsController < ApplicationController
     erb :'/patients/new'
   end
 
+  post '/patients' do
+    patient = Patient.create(params)
+    redirect to "/patients/#{patient.id}"
+  end
+
 end
