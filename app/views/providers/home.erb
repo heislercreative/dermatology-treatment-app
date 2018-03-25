@@ -2,6 +2,12 @@
 
 <br>
 
+<form action="/patients/new">
+  <input type="submit" value="Add a Patient">
+</form>
+
+<br>
+
 <h3>Your Patients:</h3>
 <ul>
   <% @patients.sort_by{|p| p.name}.each do |patient| %>
