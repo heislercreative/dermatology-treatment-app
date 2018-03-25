@@ -25,7 +25,7 @@ class PatientsController < ApplicationController
 
   patch '/patients/:id' do
     @patient = Patient.find_by_id(params[:id])
-    @patient.update(params)
+    @patient.update(params[:patient])
     redirect to "/patients/#{@patient.id}"
   end
 
