@@ -1,7 +1,7 @@
 class PatientsController < ApplicationController
 
-  get '/patients' do
-    "Hello world"
+  get '/patients/new' do
+    erb :'/patients/new'
   end
 
 end
