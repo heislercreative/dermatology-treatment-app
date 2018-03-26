@@ -9,7 +9,16 @@
 <h3>Your Patients:</h3>
 <ul>
   <% @patients.sort_by{|p| p.name}.each do |patient| %>
-    <li><a href="/patients/<%= patient.id %>"><%= patient.name %></a></li>
+    <li>
+      <a href="/patients/<%= patient.id %>"><%= patient.name %></a>
+      <% list = [] %>
+      <% patient.conditions.each do |c| %>
+        <% list << c.treated %>
+      <% end %>
+      <% if list.include?(false) %>
+        - Needs Treatment
+      <% end %>
+    </li>
   <% end %>
 </ul>
 
