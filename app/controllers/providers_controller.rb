@@ -11,13 +11,21 @@ class ProvidersController < ApplicationController
   end
 
   post '/signup' do
-    provider = Provider.new(params)
+    if !!Provider.find_by(username: params[:username])
+      redirect to '/signup-retry'
+    else
+      provider = Provider.new(params)
+    end
     if provider.save
       session[:user_id] = provider.id
       redirect to '/providers/home'
     else
       redirect to '/failure'
     end
+  end
+
+  get '/signup-retry' do
+    erb :retry
   end
 
   get '/login' do

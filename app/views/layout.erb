@@ -7,7 +7,7 @@
 
   <body>
     <div class="container">
-      <% if request.path_info == '/' || request.path_info == '/login' || request.path_info == '/signup' %>
+      <% if request.path_info == '/' || request.path_info == '/login' || request.path_info == '/signup' || request.path_info == '/signup-retry' %>
         <%= yield %>
       <% elsif Helpers.is_logged_in?(session) %>
         <%= yield %>
