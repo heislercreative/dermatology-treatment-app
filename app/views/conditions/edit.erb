@@ -7,20 +7,20 @@
   <label>Select a Condition:</label>
   <br>
   <% @conditions.each do |condition| %>
-    <input type="radio" name="condition[name]" value="<%= condition %>" <%='checked' if @condition.name.include?(condition) %>><%= condition %></input><br>
+    <input type="radio" name="condition[name]" value="<%= condition %>" <%='checked' if @condition.name.include?(condition) %>> <%= condition %></input><br>
   <% end %>
 
   <br>
 
   <label>Location: </label>
-  <input type="text" name="condition[location]" value="<%= @condition.location %>">
+  <input type="text" name="condition[location]" placeholder="Ex: Left inferior cheek" value="<%= @condition.location %>">
 
   <br><br>
 
   <label>Date Diagnosed: </label>
-  <input type="text" name="condition[date_diagnosed]" value="<%= @condition.date_diagnosed %>">
+  <input type="text" name="condition[date_diagnosed]" placeholder="01/15/2018" value="<%= @condition.date_diagnosed %>">
 
-  <br><br><hr><br>
+  <br><hr>
 
   <label>Treated: </label>
   <input type="radio" name="condition[treated]" value="true" <%='checked' if @condition.treated == true %>> Yes</input>
@@ -29,12 +29,12 @@
   <br><br>
 
   <label>Treatment: </label>
-  <input type="text" name="condition[treatment]" value="<%= @condition.treatment %>">
+  <input type="text" name="condition[treatment]" placeholder="Ex: Topical, Mohs, LN2" value="<%= @condition.treatment %>">
 
   <br><br>
 
   <label>Date Treated: </label>
-  <input type="text" name="condition[date_treated]" value="<%= @condition.date_treated %>">
+  <input type="text" name="condition[date_treated]" placeholder="06/15/2018" value="<%= @condition.date_treated %>">
 
   <br><br>
 

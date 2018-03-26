@@ -4,6 +4,8 @@
   <input type="submit" value="No, Return to Patient">
 </form>
 
+<br>
+
 <form action="/patients/<%= @patient.id %>/conditions/<%= @condition.id %>/delete" method="post">
   <input type="hidden" id="hidden" name="_method" value="delete">
   <input type="submit" value="Yes, Delete Condition">
