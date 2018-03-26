@@ -1,7 +1,7 @@
 class Helpers
 
   def self.current_user(session)
-    @user = Provider.find(session[:user_id])
+    @provider = Provider.find(session[:user_id])
   end
 
   def self.is_logged_in?(session)
