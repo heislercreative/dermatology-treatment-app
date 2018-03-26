@@ -2,17 +2,21 @@
 <html>
   <head>
     <title>Dermatology Treatment Tracker</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
   </head>
 
   <body>
+    <div class="container">
+      <% if request.path_info == '/' || request.path_info == '/login' || request.path_info == '/signup' %>
+        <%= yield %>
+      <% elsif Helpers.is_logged_in?(session) %>
+        <%= yield %>
+      <% else %>
+        <% redirect to '/' %>
+      <% end %>
+    </div>
 
-    <% if request.path_info == '/' || request.path_info == '/login' || request.path_info == '/signup' %>
-      <%= yield %>
-    <% elsif Helpers.is_logged_in?(session) %>
-      <%= yield %>
-    <% else %>
-      <% redirect to '/' %>
-    <% end %>
-
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
   </body>
 </html>
