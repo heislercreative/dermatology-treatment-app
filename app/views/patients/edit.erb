@@ -7,17 +7,17 @@
     <input type="hidden" id="hidden" name="_method" value="patch">
 
     <label>Name: </label>
-    <input type="text" name="patient[name]" value="<%= @patient.name %>">
+    <input type="text" name="patient[name]" value="<%= @patient.name %>" required>
 
     <br><br>
 
     <label>Date of Birth: </label>
-    <input type="text" name="patient[dob]" value="<%= @patient.dob %>">
+    <input type="text" name="patient[dob]" value="<%= @patient.dob %>" required>
 
     <br><br>
 
     <label>Phone Number: </label>
-    <input type="text" name="patient[phone]" value="<%= @patient.phone %>">
+    <input type="text" name="patient[phone]" value="<%= @patient.phone %>" required>
 
     <br><br>
 

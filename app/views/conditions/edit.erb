@@ -8,23 +8,23 @@
     <label>Select a Condition:</label>
     <br>
     <% @conditions.each do |condition| %>
-      <input type="radio" name="condition[name]" value="<%= condition %>" <%='checked' if @condition.name.include?(condition) %>> <%= condition %></input><br>
+      <input type="radio" name="condition[name]" value="<%= condition %>" required <%='checked' if @condition.name.include?(condition) %>> <%= condition %></input><br>
     <% end %>
 
     <br>
 
     <label>Location: </label>
-    <input type="text" name="condition[location]" placeholder="Ex: Left inferior cheek" value="<%= @condition.location %>">
+    <input type="text" name="condition[location]" placeholder="Ex: Left inferior cheek" value="<%= @condition.location %>" required>
 
     <br><br>
 
     <label>Date Diagnosed: </label>
-    <input type="text" name="condition[date_diagnosed]" placeholder="01/15/2018" value="<%= @condition.date_diagnosed %>">
+    <input type="text" name="condition[date_diagnosed]" placeholder="01/15/2018" value="<%= @condition.date_diagnosed %>" required>
 
     <br><hr>
 
     <label>Treated: </label>
-    <input type="radio" name="condition[treated]" value="true" <%='checked' if @condition.treated == true %>> Yes</input>
+    <input type="radio" name="condition[treated]" value="true" required <%='checked' if @condition.treated == true %>> Yes</input>
     <input type="radio" name="condition[treated]" value="false" <%='checked' if @condition.treated == false %>> No</input>
 
     <br><br>
