@@ -1,46 +1,50 @@
-<br>
-
-<form action="/patients/<%= @patient.id %>">
-  <input type="submit" value="Return to Patient">
-</form>
-
-<h2><%= @patient.name %></h2>
-<h3>Add a Condition</h3>
-
-<form method="post" action="/patients/<%= @patient.id %>/conditions">
-  <label>Select a Condition:</label>
-  <br>
-  <% @conditions.each do |condition| %>
-    <input type="radio" name="condition[name]" value="<%= condition %>"> <%= condition %></input><br>
-  <% end %>
-
+<% if Helpers.current_user(session).id == @patient.provider_id %>
   <br>
 
-  <label>Location: </label>
-  <input type="text" name="condition[location]" placeholder="Ex: Left inferior cheek">
+  <form action="/patients/<%= @patient.id %>">
+    <input type="submit" value="Return to Patient">
+  </form>
 
-  <br><br>
+  <h2><%= @patient.name %></h2>
+  <h3>Add a Condition</h3>
 
-  <label>Date Diagnosed: </label>
-  <input type="text" name="condition[date_diagnosed]" placeholder="01/15/2018">
+  <form method="post" action="/patients/<%= @patient.id %>/conditions">
+    <label>Select a Condition:</label>
+    <br>
+    <% @conditions.each do |condition| %>
+      <input type="radio" name="condition[name]" value="<%= condition %>"> <%= condition %></input><br>
+    <% end %>
 
-  <br><hr>
+    <br>
 
-  <label>Treated: </label>
-  <input type="radio" name="condition[treated]" value="true"> Yes</input>
-  <input type="radio" name="condition[treated]" value="false"> No</input>
+    <label>Location: </label>
+    <input type="text" name="condition[location]" placeholder="Ex: Left inferior cheek">
 
-  <br><br>
+    <br><br>
 
-  <label>Treatment: </label>
-  <input type="text" name="condition[treatment]" placeholder="Ex: Topical, Mohs, LN2">
+    <label>Date Diagnosed: </label>
+    <input type="text" name="condition[date_diagnosed]" placeholder="01/15/2018">
 
-  <br><br>
+    <br><hr>
 
-  <label>Date Treated: </label>
-  <input type="text" name="condition[date_treated]" placeholder="06/15/2018">
+    <label>Treated: </label>
+    <input type="radio" name="condition[treated]" value="true"> Yes</input>
+    <input type="radio" name="condition[treated]" value="false"> No</input>
 
-  <br><br>
+    <br><br>
 
-  <input type="submit" value="Add Condition">
-</form>
+    <label>Treatment: </label>
+    <input type="text" name="condition[treatment]" placeholder="Ex: Topical, Mohs, LN2">
+
+    <br><br>
+
+    <label>Date Treated: </label>
+    <input type="text" name="condition[date_treated]" placeholder="06/15/2018">
+
+    <br><br>
+
+    <input type="submit" value="Add Condition">
+  </form>
+<% else %>
+  <%= redirect to '/providers/home' %>
+<% end %>

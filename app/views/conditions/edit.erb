@@ -1,48 +1,52 @@
-<h2><%= @patient.name %></h2>
-<h3>Edit Condition</h3>
+<% if Helpers.current_user(session).id == @patient.provider_id %>
+  <h2><%= @patient.name %></h2>
+  <h3>Edit Condition</h3>
 
-<form method="post" action="/patients/<%= @patient.id %>/conditions/<%= @condition.id %>">
-  <input type="hidden" id="hidden" name="_method" value="patch">
+  <form method="post" action="/patients/<%= @patient.id %>/conditions/<%= @condition.id %>">
+    <input type="hidden" id="hidden" name="_method" value="patch">
 
-  <label>Select a Condition:</label>
-  <br>
-  <% @conditions.each do |condition| %>
-    <input type="radio" name="condition[name]" value="<%= condition %>" <%='checked' if @condition.name.include?(condition) %>> <%= condition %></input><br>
-  <% end %>
+    <label>Select a Condition:</label>
+    <br>
+    <% @conditions.each do |condition| %>
+      <input type="radio" name="condition[name]" value="<%= condition %>" <%='checked' if @condition.name.include?(condition) %>> <%= condition %></input><br>
+    <% end %>
 
-  <br>
+    <br>
 
-  <label>Location: </label>
-  <input type="text" name="condition[location]" placeholder="Ex: Left inferior cheek" value="<%= @condition.location %>">
+    <label>Location: </label>
+    <input type="text" name="condition[location]" placeholder="Ex: Left inferior cheek" value="<%= @condition.location %>">
 
-  <br><br>
+    <br><br>
 
-  <label>Date Diagnosed: </label>
-  <input type="text" name="condition[date_diagnosed]" placeholder="01/15/2018" value="<%= @condition.date_diagnosed %>">
+    <label>Date Diagnosed: </label>
+    <input type="text" name="condition[date_diagnosed]" placeholder="01/15/2018" value="<%= @condition.date_diagnosed %>">
 
-  <br><hr>
+    <br><hr>
 
-  <label>Treated: </label>
-  <input type="radio" name="condition[treated]" value="true" <%='checked' if @condition.treated == true %>> Yes</input>
-  <input type="radio" name="condition[treated]" value="false" <%='checked' if @condition.treated == false %>> No</input>
+    <label>Treated: </label>
+    <input type="radio" name="condition[treated]" value="true" <%='checked' if @condition.treated == true %>> Yes</input>
+    <input type="radio" name="condition[treated]" value="false" <%='checked' if @condition.treated == false %>> No</input>
 
-  <br><br>
+    <br><br>
 
-  <label>Treatment: </label>
-  <input type="text" name="condition[treatment]" placeholder="Ex: Topical, Mohs, LN2" value="<%= @condition.treatment %>">
+    <label>Treatment: </label>
+    <input type="text" name="condition[treatment]" placeholder="Ex: Topical, Mohs, LN2" value="<%= @condition.treatment %>">
 
-  <br><br>
+    <br><br>
 
-  <label>Date Treated: </label>
-  <input type="text" name="condition[date_treated]" placeholder="06/15/2018" value="<%= @condition.date_treated %>">
+    <label>Date Treated: </label>
+    <input type="text" name="condition[date_treated]" placeholder="06/15/2018" value="<%= @condition.date_treated %>">
 
-  <br><br>
+    <br><br>
 
-  <input type="submit" value="Update Condition">
-</form>
+    <input type="submit" value="Update Condition">
+  </form>
 
-<hr><br>
+  <hr><br>
 
-<form action="/patients/<%= @patient.id %>/conditions/<%= @condition.id %>/delete">
-  <input type="submit" value="Delete Condition">
-</form>
+  <form action="/patients/<%= @patient.id %>/conditions/<%= @condition.id %>/delete">
+    <input type="submit" value="Delete Condition">
+  </form>
+<% else %>
+  <%= redirect to '/providers/home' %>
+<% end %>
