@@ -1,16 +1,12 @@
-<% if Helpers.current_user(session).id == @patient.provider_id %>
-  <h4>Are you sure you want to delete <%= @patient.name %>'s condition: <%= @condition.name %>?</h4>
+<h4>Are you sure you want to delete <%= @patient.name %>'s condition: <%= @condition.name %>?</h4>
 
-  <form action="/patients/<%= @patient.id %>">
-    <input type="submit" value="No, Return to Patient">
-  </form>
+<form action="/patients/<%= @patient.id %>">
+  <input type="submit" value="No, Return to Patient">
+</form>
 
-  <br>
+<br>
 
-  <form action="/patients/<%= @patient.id %>/conditions/<%= @condition.id %>/delete" method="post">
-    <input type="hidden" id="hidden" name="_method" value="delete">
-    <input type="submit" value="Yes, Delete Condition">
-  </form>
-<% else %>
-  <%= redirect to '/providers/home' %>
-<% end %>
+<form action="/patients/<%= @patient.id %>/conditions/<%= @condition.id %>/delete" method="post">
+  <input type="hidden" id="hidden" name="_method" value="delete">
+  <input type="submit" value="Yes, Delete Condition">
+</form>
