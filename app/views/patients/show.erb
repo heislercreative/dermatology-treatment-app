@@ -1,40 +1,40 @@
-  <br>
+<br>
 
-  <form action="/providers/home">
-    <input type="submit" value="Return to Patient List">
-  </form>
+<form action="/providers/home">
+  <input type="submit" value="Return to Patient List">
+</form>
 
-  <h2><%= @patient.name %></h2>
-  <p><strong>DOB: </strong><em><%= @patient.dob %></em></p>
-  <p><strong>Phone: </strong><%= @patient.phone %></p>
+<h2><%= @patient.name %></h2>
+<p><strong>DOB: </strong><em><%= @patient.dob %></em></p>
+<p><strong>Phone: </strong><%= @patient.phone %></p>
 
-  <form action="/patients/<%= @patient.id %>/edit">
-    <input type="submit" value="Edit Patient">
-  </form>
+<form action="/patients/<%= @patient.id %>/edit">
+  <input type="submit" value="Edit Patient">
+</form>
 
-  <hr>
+<hr>
 
-  <h3>Conditions (select to edit):</h3>
-  <ol>
-    <% @conditions.each do |condition| %>
-      <li>
-        <a href="/patients/<%= @patient.id %>/conditions/<%= condition.id %>/edit"><strong><%= condition.name %></strong></a>
-         - Diagnosed: <%= condition.date_diagnosed %>
-        <% if condition.treated == true %>
-          <em><strong> - Treated: <%= condition.date_treated %></strong></em>
-        <% end %>
-      </li>
-    <% end %>
-  </ol>
+<h3>Conditions (select to edit):</h3>
+<ol>
+  <% @conditions.each do |condition| %>
+    <li>
+      <a href="/patients/<%= @patient.id %>/conditions/<%= condition.id %>/edit"><strong><%= condition.name %></strong></a>
+       - Diagnosed: <%= condition.date_diagnosed %>
+      <% if condition.treated == true %>
+        <em><strong> - Treated: <%= condition.date_treated %></strong></em>
+      <% end %>
+    </li>
+  <% end %>
+</ol>
 
-  <br>
+<br>
 
-  <form action="/patients/<%= @patient.id %>/conditions/new">
-    <input type="submit" value="Add Condition">
-  </form>
+<form action="/patients/<%= @patient.id %>/conditions/new">
+  <input type="submit" value="Add Condition">
+</form>
 
-  <hr><br>
+<hr><br>
 
-  <form action="/patients/<%= @patient.id %>/delete">
-    <input type="submit" value="Delete Patient">
-  </form>
+<form action="/patients/<%= @patient.id %>/delete">
+  <input type="submit" value="Delete Patient">
+</form>

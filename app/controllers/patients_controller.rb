@@ -1,14 +1,16 @@
 class PatientsController < ApplicationController
 
   get '/patients/new' do
-    erb :'/patients/new'
+    if !logged_in?
+      redirect to '/'
+    else
+      erb :'/patients/new'
+    end
   end
 
   post '/patients' do
-    @patient = Patient.new(params[:patient])
-    @provider = Provider.find(session[:user_id])
-    @patient.provider_id = @provider.id
-    @patient.save
+    @patient = current_user.patients.build(params[:patient])
+    current_user.save
     redirect to "/patients/#{@patient.id}"
   end
 
@@ -26,25 +28,43 @@ class PatientsController < ApplicationController
   end
 
   get '/patients/:id/edit' do
-    @patient = Patient.find_by_(params[:id])
-    erb :'/patients/edit'
+    if !logged_in?
+      redirect to '/'
+    else
+      if @patient = current_user.patients.find_by_id(params[:id])
+        erb :'/patients/edit'
+      else
+        redirect to '/providers/home'
+      end
+    end
   end
 
   patch '/patients/:id' do
-    @patient = Patient.find_by_id(params[:id])
-    @patient.update(params[:patient])
-    redirect to "/patients/#{@patient.id}"
+    if @patient = current_user.patients.find_by_id(params[:id])
+      @patient.update(params[:patient])
+      redirect to "/patients/#{@patient.id}"
+    else
+      redirect to '/providers/home'
+    end
   end
 
   get '/patients/:id/delete' do
-    @patient = Patient.find_by_id(params[:id])
-    erb :'/patients/delete'
+    if !logged_in?
+      redirect to '/'
+    else
+      if @patient = current_user.patients.find_by_id(params[:id])
+        erb :'/patients/delete'
+      else
+        redirect to '/providers/home'
+      end
+    end
   end
 
   delete '/patients/:id/delete' do
-    @patient = Patient.find_by_id(params[:id])
-    @patient.delete
-    redirect to '/providers/home'
+    if @patient = current_user.patients.find_by_id(params[:id])
+      @patient.delete
+      redirect to '/providers/home'
+    end
   end
 
 end

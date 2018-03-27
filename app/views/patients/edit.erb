@@ -1,28 +1,24 @@
-<% if Helpers.current_user(session).id == @patient.provider_id %>
-  <h2><%= @patient.name %></h2>
+<h2><%= @patient.name %></h2>
 
-  <br>
+<br>
 
-  <form method="post" action="/patients/<%= @patient.id %>">
-    <input type="hidden" id="hidden" name="_method" value="patch">
+<form method="post" action="/patients/<%= @patient.id %>">
+  <input type="hidden" id="hidden" name="_method" value="patch">
 
-    <label>Name: </label>
-    <input type="text" name="patient[name]" value="<%= @patient.name %>" required>
+  <label>Name: </label>
+  <input type="text" name="patient[name]" value="<%= @patient.name %>" required>
 
-    <br><br>
+  <br><br>
 
-    <label>Date of Birth: </label>
-    <input type="text" name="patient[dob]" value="<%= @patient.dob %>" required>
+  <label>Date of Birth: </label>
+  <input type="text" name="patient[dob]" value="<%= @patient.dob %>" required>
 
-    <br><br>
+  <br><br>
 
-    <label>Phone Number: </label>
-    <input type="text" name="patient[phone]" value="<%= @patient.phone %>" required>
+  <label>Phone Number: </label>
+  <input type="text" name="patient[phone]" value="<%= @patient.phone %>" required>
 
-    <br><br>
+  <br><br>
 
-    <input type="submit" value="Update Patient">
-  </form>
-<% else %>
-  <%= redirect to '/providers/home' %>
-<% end %>
+  <input type="submit" value="Update Patient">
+</form>
