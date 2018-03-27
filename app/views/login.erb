@@ -8,6 +8,18 @@
 
 <br>
 
+<% if @wrong_passord %>
+  <div class="alert alert-danger" role="alert">
+    Incorrect password. Please try again.
+  </div>
+<% end %>
+
+<% if @wrong_username %>
+  <div class="alert alert-danger" role="alert">
+    Could not find username. Please try again or <a href="/signup">sign up</a>.
+  </div>
+<% end %>
+
 <form method="post" action="/login">
   <label>Username: </label>
   <input type="text" name="username" placeholder="Username" required>

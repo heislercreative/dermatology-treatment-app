@@ -30,12 +30,16 @@ class ProvidersController < ApplicationController
   end
 
   post '/login' do
-    provider = Provider.find_by(username: params[:username])
-    if provider && provider.authenticate(params[:password])
+    @provider = Provider.find_by(username: params[:username])
+    if @provider && @provider.authenticate(params[:password])
       session[:user_id] = provider.id
       redirect to '/providers/home'
+    elsif @provider && !@provider.authenticate(params[:password])
+      @wrong_passord = true
+      erb :login
     else
-      redirect to '/failure'
+      @wrong_username = true
+      erb :login
     end
   end
 
