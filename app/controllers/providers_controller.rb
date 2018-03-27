@@ -48,8 +48,4 @@ class ProvidersController < ApplicationController
     redirect to '/'
   end
 
-  get '/failure' do
-    erb :failure
-  end
-
 end
