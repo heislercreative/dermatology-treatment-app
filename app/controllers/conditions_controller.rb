@@ -1,9 +1,16 @@
 class ConditionsController < ApplicationController
 
   get '/patients/:id/conditions/new' do
-    @patient = Patient.find_by_id(params[:id])
-    @conditions = Condition.list
-    erb :'/conditions/new'
+    if !logged_in?
+      redirect to '/'
+    else
+      if @patient = current_user.patients.find_by_id(params[:id])
+        @conditions = Condition.list
+        erb :'/conditions/new'
+      else
+        redirect to '/home'
+      end
+    end
   end
 
   post '/patients/:id/conditions' do
