@@ -1,6 +1,6 @@
 class ProvidersController < ApplicationController
 
-  get '/providers/home' do
+  get '/home' do
     if !logged_in?
       redirect to '/'
     else
@@ -21,7 +21,7 @@ class ProvidersController < ApplicationController
     else
       @provider = Provider.create(params)
       session[:user_id] = @provider.id
-      redirect to '/providers/home'
+      redirect to '/home'
     end
   end
 
