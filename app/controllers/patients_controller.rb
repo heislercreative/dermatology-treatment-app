@@ -22,7 +22,7 @@ class PatientsController < ApplicationController
         @conditions = @patient.conditions
         erb :'/patients/show'
       else
-        redirect to '/providers/home'
+        redirect to '/home'
       end
     end
   end
@@ -34,7 +34,7 @@ class PatientsController < ApplicationController
       if @patient = current_user.patients.find_by_id(params[:id])
         erb :'/patients/edit'
       else
-        redirect to '/providers/home'
+        redirect to '/home'
       end
     end
   end
@@ -44,7 +44,7 @@ class PatientsController < ApplicationController
       @patient.update(params[:patient])
       redirect to "/patients/#{@patient.id}"
     else
-      redirect to '/providers/home'
+      redirect to '/home'
     end
   end
 
@@ -55,7 +55,7 @@ class PatientsController < ApplicationController
       if @patient = current_user.patients.find_by_id(params[:id])
         erb :'/patients/delete'
       else
-        redirect to '/providers/home'
+        redirect to '/home'
       end
     end
   end
@@ -63,7 +63,7 @@ class PatientsController < ApplicationController
   delete '/patients/:id/delete' do
     if @patient = current_user.patients.find_by_id(params[:id])
       @patient.delete
-      redirect to '/providers/home'
+      redirect to '/home'
     end
   end
 
