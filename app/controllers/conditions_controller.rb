@@ -14,18 +14,24 @@ class ConditionsController < ApplicationController
   end
 
   post '/patients/:id/conditions' do
-    @patient = Patient.find_by_id(params[:id])
-    @condition = Condition.new(params[:condition])
-    @condition.patient_id = @patient.id
-    @condition.save
-    redirect to "/patients/#{@patient.id}"
+    if @patient = current_user.patients.find_by_id(params[:id])
+      @condition = @patient.conditions.build(params[:condition])
+      @patient.save
+      redirect to "/patients/#{@patient.id}"
+    else
+      redirect to '/home'
+    end
   end
 
   get '/patients/:id/conditions/:cid/edit' do
-    @patient = Patient.find_by_id(params[:id])
-    @conditions = Condition.list
-    @condition = Condition.find_by_id(params[:cid])
-    erb :'/conditions/edit'
+    if !logged_in?
+      redirect to '/'
+    else
+      @patient = Patient.find_by_id(params[:id])
+      @conditions = Condition.list
+      @condition = Condition.find_by_id(params[:cid])
+      erb :'/conditions/edit'
+    end
   end
 
   patch '/patients/:id/conditions/:cid' do
@@ -36,9 +42,13 @@ class ConditionsController < ApplicationController
   end
 
   get '/patients/:id/conditions/:cid/delete' do
-    @patient = Patient.find_by_id(params[:id])
-    @condition = Condition.find_by_id(params[:cid])
-    erb :'/conditions/delete'
+    if !logged_in?
+      redirect to '/'
+    else
+      @patient = Patient.find_by_id(params[:id])
+      @condition = Condition.find_by_id(params[:cid])
+      erb :'/conditions/delete'
+    end
   end
 
   delete '/patients/:id/conditions/:cid/delete' do
