@@ -8,6 +8,12 @@
 
 <br>
 
+<% if @username_already_exists %>
+  <div class="alert alert-danger" role="alert">
+    Username already exists. Please try another.
+  </div>
+<% end %>
+
 <form method="post" action="/signup">
   <label>Name: </label>
   <input type="text" name="name" placeholder="Full Name" required>

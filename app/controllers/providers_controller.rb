@@ -12,15 +12,12 @@ class ProvidersController < ApplicationController
 
   post '/signup' do
     if !!Provider.find_by(username: params[:username])
-      redirect to '/signup-retry'
+      @username_already_exists = true
+      erb :signup
     else
-      provider = Provider.new(params)
-    end
-    if provider.save
-      session[:user_id] = provider.id
+      @provider = Provider.create(params)
+      session[:user_id] = @provider.id
       redirect to '/providers/home'
-    else
-      redirect to '/failure'
     end
   end
 
