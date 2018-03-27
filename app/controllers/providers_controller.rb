@@ -19,9 +19,8 @@ class ProvidersController < ApplicationController
       @username_already_exists = true
       erb :signup
     else
-      @provider = Provider.create(name: params[:name].downcase, username: params[:username], password: params[:password])
-      session[:user_id] = @provider.id
-      redirect to '/home'
+      @provider = Provider.create(name: params[:name], username: params[:username].downcase, password: params[:password])
+      login(params[:username].downcase, params[:password])
     end
   end
 
