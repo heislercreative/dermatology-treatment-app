@@ -14,7 +14,11 @@ class ApplicationController < Sinatra::Base
   helpers do
 
     def logged_in?
-      !!session[:username]
+      !!current_user
+    end
+
+    def current_user
+      @provider ||= Provider.find_by(username: session[:username]) if session[:username]
     end
 
     def login(username, password)

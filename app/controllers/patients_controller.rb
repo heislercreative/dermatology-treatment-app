@@ -13,13 +13,20 @@ class PatientsController < ApplicationController
   end
 
   get '/patients/:id' do
-    @patient = Patient.find_by_id(params[:id])
-    @conditions = @patient.conditions
-    erb :'/patients/show'
+    if !logged_in?
+      redirect to '/'
+    else
+      if @patient = current_user.patients.find_by_id(params[:id])
+        @conditions = @patient.conditions
+        erb :'/patients/show'
+      else
+        redirect to '/providers/home'
+      end
+    end
   end
 
   get '/patients/:id/edit' do
-    @patient = Patient.find_by_id(params[:id])
+    @patient = Patient.find_by_(params[:id])
     erb :'/patients/edit'
   end
 

@@ -4,7 +4,7 @@ class ProvidersController < ApplicationController
     if !logged_in?
       redirect to '/'
     else
-      @provider = Provider.find_by(username: session[:username])
+      current_user
       @patients = @provider.patients
       erb :'/providers/home'
     end
