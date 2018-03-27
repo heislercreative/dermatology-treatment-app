@@ -7,13 +7,7 @@
 
   <body>
     <div class="container">
-      <% if request.path_info == '/' || request.path_info == '/login' || request.path_info == '/signup' %>
-        <%= yield %>
-      <% elsif Helpers.is_logged_in?(session) %>
-        <%= yield %>
-      <% else %>
-        <% redirect to '/' %>
-      <% end %>
+      <%= yield %>
     </div>
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>

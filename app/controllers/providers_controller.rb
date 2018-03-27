@@ -1,9 +1,13 @@
 class ProvidersController < ApplicationController
 
   get '/providers/home' do
-    @provider = Provider.find(session[:user_id])
-    @patients = @provider.patients
-    erb :'/providers/home'
+    if !logged_in?
+      redirect to '/'
+    else
+      @provider = Provider.find_by(username: session[:username])
+      @patients = @provider.patients
+      erb :'/providers/home'
+    end
   end
 
   get '/signup' do
@@ -21,30 +25,16 @@ class ProvidersController < ApplicationController
     end
   end
 
-  get '/signup-retry' do
-    erb :retry
-  end
-
   get '/login' do
     erb :login
   end
 
   post '/login' do
-    @provider = Provider.find_by(username: params[:username])
-    if @provider && @provider.authenticate(params[:password])
-      session[:user_id] = provider.id
-      redirect to '/providers/home'
-    elsif @provider && !@provider.authenticate(params[:password])
-      @wrong_passord = true
-      erb :login
-    else
-      @wrong_username = true
-      erb :login
-    end
+    login(params[:username], params[:password])
   end
 
   get '/logout' do
-    session.clear
+    logout!
     redirect to '/'
   end
 
