@@ -1,12 +1,12 @@
-<h4>Are you sure you want to delete <%= @patient.name %>'s condition: <%= @condition.name %>?</h4>
+<h4>Are you sure you want to delete <%= current_patient.name %>'s condition: <%= current_condition.name %>?</h4>
 
-<form action="/patients/<%= @patient.id %>">
+<form action="/patients/<%= current_patient.id %>">
   <input type="submit" value="No, Return to Patient">
 </form>
 
 <br>
 
-<form action="/patients/<%= @patient.id %>/conditions/<%= @condition.id %>/delete" method="post">
+<form action="/patients/<%= current_patient.id %>/conditions/<%= current_condition.id %>/delete" method="post">
   <input type="hidden" id="hidden" name="_method" value="delete">
   <input type="submit" value="Yes, Delete Condition">
 </form>
