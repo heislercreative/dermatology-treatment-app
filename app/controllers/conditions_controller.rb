@@ -27,7 +27,8 @@ class ConditionsController < ApplicationController
     if !logged_in?
       redirect to '/'
     else
-      if current_condition
+      if current_patient
+        current_condition
         @conditions = Condition.list
         erb :'/conditions/edit'
       else
@@ -37,7 +38,7 @@ class ConditionsController < ApplicationController
   end
 
   patch '/patients/:id/conditions/:cid' do
-    if current_condition
+    if current_patient
       current_condition.update(params[:condition])
       redirect to "/patients/#{current_patient.id}"
     else
@@ -49,7 +50,7 @@ class ConditionsController < ApplicationController
     if !logged_in?
       redirect to '/'
     else
-      if current_condition
+      if current_patient
         erb :'/conditions/delete'
       else
         redirect to '/home'
@@ -58,7 +59,7 @@ class ConditionsController < ApplicationController
   end
 
   delete '/patients/:id/conditions/:cid/delete' do
-    if current_condition
+    if current_patient
       current_condition.delete
       redirect to "/patients/#{current_patient.id}"
     else
