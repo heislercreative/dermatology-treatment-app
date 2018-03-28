@@ -4,7 +4,7 @@ class ConditionsController < ApplicationController
     if !logged_in?
       redirect to '/'
     else
-      if @patient = current_user.patients.find_by_id(params[:id])
+      if current_patient
         @conditions = Condition.list
         erb :'/conditions/new'
       else
@@ -14,10 +14,10 @@ class ConditionsController < ApplicationController
   end
 
   post '/patients/:id/conditions' do
-    if @patient = current_user.patients.find_by_id(params[:id])
-      @condition = @patient.conditions.build(params[:condition])
-      @patient.save
-      redirect to "/patients/#{@patient.id}"
+    if current_patient
+      @condition = current_patient.conditions.build(params[:condition])
+      current_patient.save
+      redirect to "/patients/#{current_patient.id}"
     else
       redirect to '/home'
     end
@@ -27,9 +27,9 @@ class ConditionsController < ApplicationController
     if !logged_in?
       redirect to '/'
     else
-      if @patient = current_user.patients.find_by_id(params[:id])
+      if current_patient
         @conditions = Condition.list
-        @condition = @patient.conditions.find_by_id(params[:cid])
+        @condition = current_patient.conditions.find_by_id(params[:cid])
         erb :'/conditions/edit'
       else
         redirect to '/home'
@@ -38,10 +38,10 @@ class ConditionsController < ApplicationController
   end
 
   patch '/patients/:id/conditions/:cid' do
-    if @patient = current_user.patients.find_by_id(params[:id])
-      @condition = @patient.conditions.find_by_id(params[:cid])
+    if current_patient
+      @condition = current_patient.conditions.find_by_id(params[:cid])
       @condition.update(params[:condition])
-      redirect to "/patients/#{@patient.id}"
+      redirect to "/patients/#{current_patient.id}"
     else
       redirect to '/home'
     end
@@ -51,8 +51,8 @@ class ConditionsController < ApplicationController
     if !logged_in?
       redirect to '/'
     else
-      if @patient = current_user.patients.find_by_id(params[:id])
-        @condition = @patient.conditions.find_by_id(params[:cid])
+      if current_patient
+        @condition = current_patient.conditions.find_by_id(params[:cid])
         erb :'/conditions/delete'
       else
         redirect to '/home'
@@ -61,10 +61,10 @@ class ConditionsController < ApplicationController
   end
 
   delete '/patients/:id/conditions/:cid/delete' do
-    if @patient = current_user.patients.find_by_id(params[:id])
-      @condition = @patient.conditions.find_by_id(params[:cid])
+    if current_patient
+      @condition = current_patient.conditions.find_by_id(params[:cid])
       @condition.delete
-      redirect to "/patients/#{@patient.id}"
+      redirect to "/patients/#{current_patient.id}"
     else
       redirect to '/home'
     end

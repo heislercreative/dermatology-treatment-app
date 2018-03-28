@@ -18,8 +18,8 @@ class PatientsController < ApplicationController
     if !logged_in?
       redirect to '/'
     else
-      if @patient = current_user.patients.find_by_id(params[:id])
-        @conditions = @patient.conditions
+      if current_patient
+        @conditions = current_patient.conditions
         erb :'/patients/show'
       else
         redirect to '/home'
@@ -31,7 +31,7 @@ class PatientsController < ApplicationController
     if !logged_in?
       redirect to '/'
     else
-      if @patient = current_user.patients.find_by_id(params[:id])
+      if current_patient
         erb :'/patients/edit'
       else
         redirect to '/home'
@@ -40,9 +40,9 @@ class PatientsController < ApplicationController
   end
 
   patch '/patients/:id' do
-    if @patient = current_user.patients.find_by_id(params[:id])
-      @patient.update(params[:patient])
-      redirect to "/patients/#{@patient.id}"
+    if current_patient
+      current_patient.update(params[:patient])
+      redirect to "/patients/#{current_patient.id}"
     else
       redirect to '/home'
     end
@@ -52,7 +52,7 @@ class PatientsController < ApplicationController
     if !logged_in?
       redirect to '/'
     else
-      if @patient = current_user.patients.find_by_id(params[:id])
+      if current_patient
         erb :'/patients/delete'
       else
         redirect to '/home'
@@ -61,8 +61,8 @@ class PatientsController < ApplicationController
   end
 
   delete '/patients/:id/delete' do
-    if @patient = current_user.patients.find_by_id(params[:id])
-      @patient.delete
+    if current_patient
+      current_patient.delete
       redirect to '/home'
     end
   end

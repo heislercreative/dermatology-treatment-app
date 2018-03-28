@@ -21,6 +21,10 @@ class ApplicationController < Sinatra::Base
       @provider ||= Provider.find_by(username: session[:username]) if session[:username]
     end
 
+    def current_patient
+      @patient ||= current_user.patients.find_by_id(params[:id])
+    end
+
     def login(username, password)
       @provider = Provider.find_by(username: username)
       if @provider && @provider.authenticate(password)
