@@ -5,7 +5,7 @@ class ConditionsController < ApplicationController
       redirect to '/'
     else
       if current_patient
-        @conditions = Condition.list
+        condition_list
         erb :'/conditions/new'
       else
         redirect to '/home'
@@ -29,7 +29,7 @@ class ConditionsController < ApplicationController
     else
       if current_patient
         current_condition
-        @conditions = Condition.list
+        condition_list
         erb :'/conditions/edit'
       else
         redirect to '/home'
