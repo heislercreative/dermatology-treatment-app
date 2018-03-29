@@ -23,7 +23,7 @@ class ApplicationController < Sinatra::Base
         session[:username] = @provider.username
         redirect to '/home'
       elsif @provider && !@provider.authenticate(params[:password])
-        @wrong_passord = true
+        @wrong_password = true
         erb :login
       else
         @wrong_username = true
