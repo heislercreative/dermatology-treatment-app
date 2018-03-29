@@ -14,7 +14,7 @@ class ProvidersController < ApplicationController
     erb :signup
   end
 
-  post '/providers' do
+  post '/signup' do
     if !!Provider.find_by(username: params[:username])
       @username_already_exists = true
       erb :signup
