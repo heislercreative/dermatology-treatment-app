@@ -20,7 +20,8 @@ class ProvidersController < ApplicationController
       erb :signup
     else
       @provider = Provider.create(name: params[:name], username: params[:username].downcase, password: params[:password])
-      login(params[:username].downcase, params[:password])
+      session[:username] = @provider.username
+      redirect to '/home'
     end
   end
 
@@ -29,7 +30,17 @@ class ProvidersController < ApplicationController
   end
 
   post '/login' do
-    login(params[:username].downcase, params[:password])
+    @provider = Provider.find_by(username: params[:username])
+    if @provider && @provider.authenticate(params[:password])
+      session[:username] = @provider.username
+      redirect to '/home'
+    elsif @provider && !@provider.authenticate(params[:password])
+      @wrong_password = true
+      erb :login
+    else
+      @wrong_username = true
+      erb :login
+    end
   end
 
   get '/logout' do

@@ -21,3 +21,12 @@
     </li>
   <% end %>
 </ul>
+
+<h4>Conditions:</h4>
+<ul>
+  <% @patients.each do |patient| %>
+    <% patient.conditions.sort_by{|c| c.name}.each do |condition| %>
+      <li><%= condition.name %></li>
+    <% end %>
+  <% end %>
+</ul>

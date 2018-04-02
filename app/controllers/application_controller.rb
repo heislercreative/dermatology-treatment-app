@@ -8,27 +8,17 @@ class ApplicationController < Sinatra::Base
   end
 
   get '/' do
-    erb :index
+    if logged_in?
+      redirect to "/home"
+    else
+      erb :index
+    end
   end
 
   helpers do
 
     def logged_in?
       !!current_user
-    end
-
-    def login(username, password)
-      @provider = Provider.find_by(username: username)
-      if @provider && @provider.authenticate(password)
-        session[:username] = @provider.username
-        redirect to '/home'
-      elsif @provider && !@provider.authenticate(params[:password])
-        @wrong_password = true
-        erb :login
-      else
-        @wrong_username = true
-        erb :login
-      end
     end
 
     def logout!
