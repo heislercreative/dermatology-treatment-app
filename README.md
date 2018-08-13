@@ -13,7 +13,7 @@ To start using the app, clone the repository, run `bundle` to install all necess
 
 ## Contributing
 
-Bug reports and pull requests are welcome on GitHub at https://github.com/heislercreative/dermatology-treatment-app. This project is intended to be a safe, welcoming space for collaboration, and contributors are expected to adhere to the [Contributor Covenant](http://contributor-covenant.org) code of conduct.
+Bug reports and pull requests are welcome on GitHub at https://github.com/heislercreative/dermatology-treatment-tracker. This project is intended to be a safe, welcoming space for collaboration, and contributors are expected to adhere to the [Contributor Covenant](http://contributor-covenant.org) code of conduct.
 
 ## License
 
@@ -21,4 +21,4 @@ The gem is available as open source under the terms of the [MIT License](https:/
 
 ## Code of Conduct
 
-Everyone interacting in the Dermatology Treatment App project’s codebases, issue trackers, chat rooms and mailing lists is expected to follow the [code of conduct](https://github.com/heislercreative/dermatology-treatment-app/blob/master/CODE_OF_CONDUCT.md).
+Everyone interacting in the Dermatology Treatment Tracker project’s codebases, issue trackers, chat rooms and mailing lists is expected to follow the [code of conduct](https://github.com/heislercreative/dermatology-treatment-tracker/blob/master/CODE_OF_CONDUCT.md).
