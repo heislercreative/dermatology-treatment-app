@@ -1,4 +1,4 @@
-# Dermatology Treatment App
+# Dermatology Treatment Tracker
 
 This Sinatra MVC app allows dermatologists to track their patients' conditions, with an easy patient list view indicating who still requires treatment.
 
