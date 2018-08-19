@@ -11,6 +11,9 @@ To start using the app, clone the repository, run `bundle` to install all necess
 - Each patient can have a list of conditions with details including diagnosis and treatment dates.
 - Both patients and their conditions can be edited and/or deleted.
 
+## Blog
+[View post here](https://heislercreative.github.io/dermatology_treatment_-_sinatra_app)
+
 ## Contributing
 
 Bug reports and pull requests are welcome on GitHub at https://github.com/heislercreative/dermatology-treatment-tracker. This project is intended to be a safe, welcoming space for collaboration, and contributors are expected to adhere to the [Contributor Covenant](http://contributor-covenant.org) code of conduct.
