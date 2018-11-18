@@ -9,6 +9,7 @@ gem 'sinatra-activerecord'
 gem 'require_all'
 gem 'shotgun'
 gem 'bcrypt'
+gem "rack", ">= 2.0.6"
 
 group :development do
   gem "tux"
